@@ -3,9 +3,12 @@
 import * as React from "react";
 import { Moon, Sun } from "lucide-react";
 import { useTheme } from "next-themes";
-import { Button } from "./Button";
 
-export const ThemeToggle = () => {
+export const ThemeToggle = ({
+  acessibilityText,
+}: {
+  acessibilityText: string;
+}) => {
   const { theme, setTheme } = useTheme();
   const [mounted, isMounted] = React.useState(false);
 
@@ -13,21 +16,20 @@ export const ThemeToggle = () => {
     isMounted(true);
   }, []);
 
-  if (!mounted)
-    return <Button variant="secondary" size="icon" disabled={true}></Button>;
+  if (!mounted) return <button disabled={true}></button>;
 
   const dark = theme === "dark";
   return (
-    <Button
-      variant="secondary"
-      size="icon"
+    <button
       onClick={() => setTheme(dark ? "light" : "dark")}
+      className="hover:cursor-pointer bg-transparent text-foreground w-fit p-0 text-xl"
     >
       {dark ? (
-        <Sun className="hover:cursor-pointer hover:text-primary" />
+        <Sun className="hover:text-amber-400 bg-transparent" />
       ) : (
-        <Moon className="hover:cursor-pointer hover:text-primary" />
+        <Moon className="hover:text-purple-400 bg-transparent" />
       )}
-    </Button>
+      <span className="sr-only">{acessibilityText}</span>
+    </button>
   );
 };
