@@ -1,7 +1,7 @@
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import Link from "next/link";
 import { Menu } from "lucide-react";
-import { Button } from "../ui/button";
+import { Button } from "../ui/Button";
 import { Avatar, AvatarFallback, AvatarImage } from "../ui/avatar";
 import {
   House,
