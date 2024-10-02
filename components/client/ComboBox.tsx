@@ -57,7 +57,7 @@ const ComboBox: React.FC<ComboBoxProps> = ({
   };
 
   return (
-    <div className="relative flex flex-row items-center gap-4 " ref={ref}>
+    <div className="relative " ref={ref}>
       <label htmlFor={`combobox-${label}`} className="text-md font-medium mb-1">
         {label}
       </label>

@@ -1,5 +1,4 @@
 "use client"; //hooks can only be used in client side components
-import Link from "next/link";
 import "./styles.css";
 
 export default function AuthLayout({

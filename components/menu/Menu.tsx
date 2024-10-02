@@ -7,7 +7,7 @@ import {
   BadgeEuro,
   ChartColumnIncreasing,
   LucideIcon,
-  Settings2,
+  // Settings2,
   LogOut,
 } from "lucide-react";
 import {

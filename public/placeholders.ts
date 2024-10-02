@@ -1,6 +1,6 @@
-import { IUser } from "@/@types/User";
+import { User } from "@/types/User";
 
-export const userPlaceholder: IUser = {
+export const userPlaceholder: User = {
   id: 1,
   username: "BioJorge",
   currency: "EUR",

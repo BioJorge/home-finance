@@ -1,20 +1,15 @@
 import React, { useState, useMemo } from "react";
 import ComboBox from "./ComboBox";
-import { Entidade } from "@/types/Entidades";
+import { useHomeContext } from "@/contexts/HomeContext";
 
-interface SearchFormProps {
-  setCurrentClient: React.Dispatch<React.SetStateAction<Entidade | null>>;
-  entidades: Entidade[];
-  isLoading: boolean;
-  error: string | null;
-}
-
-const SearchForm: React.FC<SearchFormProps> = ({
-  setCurrentClient,
-  entidades,
-  isLoading,
-  error,
-}) => {
+const SearchForm: React.FC = () => {
+  const {
+    entidades,
+    setCurrentClient,
+    isLoadingEntidades,
+    errorEntidades,
+    setCurrentMorada,
+  } = useHomeContext();
   const [searchParams, setSearchParams] = useState({
     id_entidade: "",
     nuit: "",
@@ -66,6 +61,7 @@ const SearchForm: React.FC<SearchFormProps> = ({
     }
     // Update the current client state
     setCurrentClient(client);
+    setCurrentMorada(null);
   };
 
   const handleSubmit = (e: React.FormEvent) => {
@@ -74,8 +70,8 @@ const SearchForm: React.FC<SearchFormProps> = ({
     // Implement your search logic here
   };
 
-  if (isLoading) return <div>Carregando...</div>;
-  if (error) return <div>Erro: {error}</div>;
+  if (isLoadingEntidades) return <div>Carregando...</div>;
+  if (errorEntidades) return <div>Erro: {errorEntidades}</div>;
 
   return (
     <form

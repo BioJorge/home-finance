@@ -1,6 +1,7 @@
 // app/api/moradas/[id]/route.ts
 import { NextRequest, NextResponse } from "next/server";
 import { getMoradasByID } from "@/services/moradaServices";
+import { handleError } from "@/lib/utils";
 
 export async function GET(
   request: NextRequest,
@@ -19,12 +20,13 @@ export async function GET(
     }
 
     return NextResponse.json(morada);
-  } catch (error: any) {
+  } catch (error: unknown) {
+    const errorMessage = handleError(error);
     console.error(`Erro ao buscar entidade com ID ${id}:`, error);
     return NextResponse.json(
       {
         error: `Falha ao buscar entidade com ID ${id}`,
-        details: error.message,
+        details: errorMessage,
       },
       { status: 500 }
     );

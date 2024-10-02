@@ -1,7 +1,6 @@
 //lib/db/config.ts
 import { config } from "dotenv";
 
-// Carrega as variáveis de ambiente
 config();
 
 interface DbConfigOptions {
@@ -11,6 +10,11 @@ interface DbConfigOptions {
   charset: string;
   connectTimeout: number;
   requestTimeout: number;
+  pool: {
+    max: number;
+    min: number;
+    idleTimeoutMillis: number;
+  };
 }
 
 interface DbConfig {
@@ -33,8 +37,13 @@ const db_config: DbConfig = {
     trustedConnection: true,
     instancename: "SQLEXPRESS",
     charset: "UTF-8",
-    connectTimeout: 120000,
-    requestTimeout: 120000,
+    connectTimeout: 30000,
+    requestTimeout: 30000,
+    pool: {
+      max: 10,
+      min: 0,
+      idleTimeoutMillis: 30000,
+    },
   },
 };
 

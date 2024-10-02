@@ -9,8 +9,8 @@ import {
   BadgeEuro,
   ChartColumnIncreasing,
   LucideIcon,
-  Settings2,
-  LogOut,
+  // Settings2,
+  // LogOut,
 } from "lucide-react";
 import { ThemeToggle } from "../ui/ThemeToggle";
 import { useAppContext } from "@/contexts/AppContext";
